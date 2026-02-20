@@ -18,7 +18,6 @@ public class PalindromeCheckerApp {
             System.out.println(word1 + " is not a palindrome.");
         }
 
-
         System.out.println();
 
 
@@ -30,6 +29,32 @@ public class PalindromeCheckerApp {
             System.out.println(word2 + " is a palindrome.");
         } else {
             System.out.println(word2 + " is not a palindrome.");
+        }
+
+        System.out.println();
+
+
+        // UC4: Character Array Based Palindrome Check
+        String word3 = "level";
+        char[] charArray = word3.toCharArray();
+        boolean isPalindrome = true;
+
+        int start = 0;
+        int end = charArray.length - 1;
+
+        while(start < end) {
+            if(charArray[start] != charArray[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
+        }
+
+        if(isPalindrome) {
+            System.out.println(word3 + " is a palindrome.");
+        } else {
+            System.out.println(word3 + " is not a palindrome.");
         }
 
     }
