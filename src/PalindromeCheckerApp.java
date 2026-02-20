@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
@@ -8,7 +10,7 @@ public class PalindromeCheckerApp {
         System.out.println("System initialized successfully.\n");
 
 
-        // UC2: Hardcoded Palindrome Result
+        // UC2
         String word1 = "madam";
         String reversed1 = "madam";
 
@@ -21,7 +23,7 @@ public class PalindromeCheckerApp {
         System.out.println();
 
 
-        // UC3: Palindrome Check Using String Reverse
+        // UC3
         String word2 = "racecar";
         String reversed2 = new StringBuilder(word2).reverse().toString();
 
@@ -34,7 +36,7 @@ public class PalindromeCheckerApp {
         System.out.println();
 
 
-        // UC4: Character Array Based Palindrome Check
+        // UC4
         String word3 = "level";
         char[] charArray = word3.toCharArray();
         boolean isPalindrome = true;
@@ -55,6 +57,29 @@ public class PalindromeCheckerApp {
             System.out.println(word3 + " is a palindrome.");
         } else {
             System.out.println(word3 + " is not a palindrome.");
+        }
+
+        System.out.println();
+
+
+        // UC5: Stack Based Palindrome Check
+        String word4 = "noon";
+        Stack<Character> stack = new Stack<>();
+
+        for(char c : word4.toCharArray()) {
+            stack.push(c);
+        }
+
+        String reversedWord = "";
+
+        while(!stack.isEmpty()) {
+            reversedWord += stack.pop();
+        }
+
+        if(word4.equals(reversedWord)) {
+            System.out.println(word4 + " is a palindrome.");
+        } else {
+            System.out.println(word4 + " is not a palindrome.");
         }
 
     }
