@@ -1,6 +1,8 @@
 import java.util.Stack;
 import java.util.Queue;
 import java.util.LinkedList;
+import java.util.Deque;
+import java.util.ArrayDeque;
 
 public class PalindromeCheckerApp {
 
@@ -87,7 +89,7 @@ public class PalindromeCheckerApp {
         System.out.println();
 
 
-        // UC6: Queue + Stack Based Palindrome Check
+        // UC6
         String word5 = "civic";
         Stack<Character> stack2 = new Stack<>();
         Queue<Character> queue = new LinkedList<>();
@@ -110,6 +112,32 @@ public class PalindromeCheckerApp {
             System.out.println(word5 + " is a palindrome.");
         } else {
             System.out.println(word5 + " is not a palindrome.");
+        }
+
+        System.out.println();
+
+
+        // UC7: Deque Based Optimized Palindrome Check
+        String word6 = "radar";
+        Deque<Character> deque = new ArrayDeque<>();
+
+        for(char c : word6.toCharArray()) {
+            deque.addLast(c);
+        }
+
+        boolean isPalindromeDeque = true;
+
+        while(deque.size() > 1) {
+            if(deque.removeFirst() != deque.removeLast()) {
+                isPalindromeDeque = false;
+                break;
+            }
+        }
+
+        if(isPalindromeDeque) {
+            System.out.println(word6 + " is a palindrome.");
+        } else {
+            System.out.println(word6 + " is not a palindrome.");
         }
 
     }
