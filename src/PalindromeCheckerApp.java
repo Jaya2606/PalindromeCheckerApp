@@ -1,4 +1,6 @@
 import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
 
 public class PalindromeCheckerApp {
 
@@ -62,7 +64,7 @@ public class PalindromeCheckerApp {
         System.out.println();
 
 
-        // UC5: Stack Based Palindrome Check
+        // UC5
         String word4 = "noon";
         Stack<Character> stack = new Stack<>();
 
@@ -80,6 +82,34 @@ public class PalindromeCheckerApp {
             System.out.println(word4 + " is a palindrome.");
         } else {
             System.out.println(word4 + " is not a palindrome.");
+        }
+
+        System.out.println();
+
+
+        // UC6: Queue + Stack Based Palindrome Check
+        String word5 = "civic";
+        Stack<Character> stack2 = new Stack<>();
+        Queue<Character> queue = new LinkedList<>();
+
+        for(char c : word5.toCharArray()) {
+            stack2.push(c);
+            queue.add(c);
+        }
+
+        boolean isPalindromeQS = true;
+
+        while(!stack2.isEmpty()) {
+            if(stack2.pop() != queue.remove()) {
+                isPalindromeQS = false;
+                break;
+            }
+        }
+
+        if(isPalindromeQS) {
+            System.out.println(word5 + " is a palindrome.");
+        } else {
+            System.out.println(word5 + " is not a palindrome.");
         }
 
     }
