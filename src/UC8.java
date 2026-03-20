@@ -1,7 +1,8 @@
 
  public class UseCase8PalindromeCheckerApp
  {
-     public static void uc8_LinkedListMethod() {
+     public static void UC8()
+     {
 
         String input = "madam";
 
@@ -53,7 +54,7 @@
 
 public static void main(String[]args)
 {
-      uc8_LinkedListMethod();
+      UC8();
 
 }
 
