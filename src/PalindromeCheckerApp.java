@@ -114,32 +114,48 @@ public class PalindromeCheckerApp {
                 processed.equals(new StringBuilder(processed).reverse().toString());
         System.out.println("UC10: " + inputUC10 + " -> " + isPalindromeUC10);
 
-        // UC11 - OOP Service
+        // UC11
         PalindromeService service = new PalindromeService();
         String inputUC11 = "racecar";
         boolean resultUC11 = service.isPalindrome(inputUC11);
         System.out.println("UC11: " + inputUC11 + " -> " + resultUC11);
+
+        // UC12 - Strategy Pattern
+        String inputUC12 = "level";
+        PalindromeStrategy strategy = new StackStrategy();
+        boolean resultUC12 = strategy.check(inputUC12);
+        System.out.println("UC12: " + inputUC12 + " -> " + resultUC12);
     }
 }
 
 
 // UC11 Service Class
 class PalindromeService {
-
     public boolean isPalindrome(String input) {
-
-        int start = 0;
-        int end = input.length() - 1;
-
+        int start = 0, end = input.length() - 1;
         while (start < end) {
-
-            if (input.charAt(start) != input.charAt(end))
-                return false;
-
-            start++;
-            end--;
+            if (input.charAt(start) != input.charAt(end)) return false;
+            start++; end--;
         }
+        return true;
+    }
+}
 
+
+// UC12 Strategy Interface
+interface PalindromeStrategy {
+    boolean check(String input);
+}
+
+
+// UC12 Stack Strategy
+class StackStrategy implements PalindromeStrategy {
+    public boolean check(String input) {
+        Stack<Character> stack = new Stack<>();
+        for (char c : input.toCharArray()) stack.push(c);
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) return false;
+        }
         return true;
     }
 }
