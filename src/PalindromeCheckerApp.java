@@ -120,11 +120,28 @@ public class PalindromeCheckerApp {
         boolean resultUC11 = service.isPalindrome(inputUC11);
         System.out.println("UC11: " + inputUC11 + " -> " + resultUC11);
 
-        // UC12 - Strategy Pattern
+        // UC12
         String inputUC12 = "level";
         PalindromeStrategy strategy = new StackStrategy();
         boolean resultUC12 = strategy.check(inputUC12);
         System.out.println("UC12: " + inputUC12 + " -> " + resultUC12);
+
+        // UC13 - Performance Comparison
+        String inputUC13 = "racecar";
+
+        long start1 = System.nanoTime();
+        boolean recursiveResult = checkRecursive(inputUC13, 0, inputUC13.length() - 1);
+        long end1 = System.nanoTime();
+
+        long start2 = System.nanoTime();
+        boolean serviceResult = service.isPalindrome(inputUC13);
+        long end2 = System.nanoTime();
+
+        System.out.println("UC13 Recursive Result: " + recursiveResult);
+        System.out.println("Recursive Time: " + (end1 - start1));
+
+        System.out.println("UC13 Service Result: " + serviceResult);
+        System.out.println("Service Time: " + (end2 - start2));
     }
 }
 
